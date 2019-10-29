@@ -1,0 +1,25 @@
+﻿@model OnyeijeSchool.Models.Blog
+
+@{
+    ViewBag.Title = Model.Title;
+
+}
+
+<div class="row">
+    <div class="card" style="padding:50px;">
+
+
+
+
+        <h4 style="font-weight: bold;">@Model.Title</h4>
+        <p>Posted by @Model.UserCreated. on @Model.DateCreated</p>
+        <p>@Html.Raw(Model.Content.Replace("\r\n", "<br />"))</p>
+
+
+
+        <p>
+
+            <a href="@Url.Action("Index", "Blogs")" class="btn btn-rose btn-fill">View Blogs</a>
+        </p>
+    </div>
+</div>

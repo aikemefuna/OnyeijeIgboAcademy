@@ -1,0 +1,47 @@
+﻿@model  IEnumerable<OnyeijeSchool.Models.AdmAssignment>
+@{
+    Layout = "~/Views/Shared/_SLayout.cshtml";
+    ViewData["Title"] = "Assignments";
+}
+
+<div class="wizard-navigation">
+    <ul class="nav nav-pills col-md-12">
+        <li class="nav-item">
+            <a class="nav-link active " data-toggle="tab" role="tab">
+                Assignment List
+            </a>
+        </li>
+    </ul>
+
+
+    <div class="clearfix"></div>
+
+</div>
+<hr />
+
+<div class="row">
+    @foreach (var item in Model)
+    {<div class="col-lg-4">
+
+            <ul class="timeline timeline-simple">
+                <li class="timeline-inverted">
+                    <div class="timeline-badge danger">
+                        <i class="nc-icon nc-single-copy-04"></i>
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <a href="@Url.Action("Details", "AdmAssignments", new { id = item.AssignmentId })">@item.Title</a>
+                        </div>
+                        <div class="timeline-body">
+
+                        </div>
+                        <h6>
+                            <i class="ti-time"></i> Given by:  @item.UserCreated on<br /> @item.DateCreated
+                        </h6>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    }
+</div>

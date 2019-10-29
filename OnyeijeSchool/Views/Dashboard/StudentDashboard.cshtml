@@ -1,0 +1,184 @@
+﻿@model OnyeijeSchool.Models.CourseIndex
+@{
+    Layout = "~/Views/Shared/_SLayout.cshtml";
+    ViewData["Title"] = "Student Dashboard";
+}
+
+
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-6 ">
+        
+           
+            <div class="alert alert-danger">
+                <p>
+                    You have missed @ViewBag.PastClasses Classes
+                </p>
+                <div class="stats">
+                    <a href="@Url.Action("Index","AdmCourses")" style="color:white"><i class="fa fa-eye"></i> View Missed Classes</a>
+                </div>
+              
+            </div>
+         
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="alert alert-success">
+            <p>
+                You have @ViewBag.ActiveClass active class
+            </p>
+            <div class="stats">
+                <a href="#" style="color:white"><i class="fa fa-eye"></i> View Active Classes</a>
+            </div>
+
+        </div>
+      
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="alert alert-warning">
+            <p>
+                You have @ViewBag.NextClass upcoming class
+            </p>
+            <div class="stats">
+                <a href="#" style="color:white"><i class="fa fa-eye"></i> View Upcoming Classes</a>
+            </div>
+
+        </div>
+       
+    </div>
+
+</div>
+<div class="row">
+    @if (ViewBag.assignment > 0)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="alert alert-primary">
+                <p>
+                    You have @ViewBag.assignment Assignment
+                </p>
+                <div class="stats">
+                    <a asp-action="Assignments" asp-controller="AdmAssignments" style="color:white"><i class="fa fa-eye"></i> View Assignment</a>
+                </div>
+
+            </div>
+
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card-pricing ">
+            <a class="nav-link" href="#">
+                <div class="card-body">
+                    <img src="~/Images/download.jpg" style="width:35%" alt="My course" />
+                    <h3 class="card-title">My Courses</h3>
+
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card-pricing ">
+            <a class="nav-link" asp-area="" asp-action="Assignments" asp-controller="AdmAssignments">
+                <div class="card-body">
+                    <img src="~/Images/checklist-clipart-writing-4.png" style="width:35%" alt="My assignment" />
+                    <h3 class="card-title">My Assignment</h3>
+
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card-pricing ">
+            <a class="nav-link" asp-area="" asp-action="Protected" asp-controller="Home">
+                <div class="card-body">
+                    <img src="~/Images/Download-Chat-PNG-Image.png" style="width:40%" alt="My chat" />
+                    <h3 class="card-title">My Chat</h3>
+
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12" style="height:auto">
+
+        <div class="card card-timeline card-tasks">
+            <h4 class="card-title">Blogs</h4>
+            <div class="card-body table-full-width table-responsive">
+                @foreach (var item in Model.Blog)
+                {
+                    <ul class="timeline timeline-simple">
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge danger">
+                                <i class="nc-icon nc-single-copy-04"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <a href="@Url.Action("Details", "Blogs", new { id = item.BlogId })">@item.Title</a>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>@Html.DisplayFor(modelItem => item.ShortDescription)
+                                </div>
+                                <h6>
+                                    <i class="ti-time"></i> Posted by:  @item.UserCreated on @item.DateCreated
+                                </h6>
+                            </div>
+                        </li>
+
+                    </ul>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="wizard-navigation">
+        <ul class="nav nav-pills col-md-12">
+            <li class="nav-item">
+                <a class="nav-link active " data-toggle="tab" role="tab">
+                    Courses
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="row">
+
+
+    @foreach (var item in Model.AdmCourses)
+    {
+        <div class="col-lg-4">
+            <div class="card" style="text-align:center; padding:10px">
+
+                <h2><b>@Html.DisplayFor(modelItem => item.CourseTitle)</b></h2>
+                @if (item.IsEnabled == true)
+                {
+                    <div class="alert alert-success">
+                        <span class="btn-label">
+                            <i class="nc-icon nc-check-2"></i>
+                        </span>
+                        Enabled for Training
+                    </div>
+                    <a asp-area="" asp-controller="AdmCourses" asp-action="Courses" asp-route-id="@item.CourseId" class="btn btn-outline-default btn-round btn-block">Begin Training</a>
+
+                }
+                else
+                {
+                    <div class="alert alert-danger">
+                        <span class="btn-label">
+                            <i class="nc-icon nc-simple-remove"></i>
+                        </span> Not opened for class
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    }
+</div>

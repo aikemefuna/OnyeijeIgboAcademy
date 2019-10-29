@@ -1,0 +1,32 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+    Layout = "_FontEndLayout";
+
+}
+
+<div class="row">
+    <div class=" card">
+        @if (ViewBag.ErrorTitle == null)
+
+        {
+            <h1 class="text-danger">Error.</h1>
+            <h2 class="text-danger">An error occurred while processing your request.</h2>
+
+            <h3>
+
+                The Support team is notified and we are working on the fix
+            </h3>
+            <h5>
+                Feel Free to leave us a message via our email channel, support@oyeijeschool.com
+            </h5>
+
+        }
+
+        else
+        {
+            <h1 class="text-rose">@ViewBag.ErrorTitle </h1>
+            <h6 class="text-rose">@ViewBag.ErrorMessage </h6>
+        }
+    </div>
+</div>

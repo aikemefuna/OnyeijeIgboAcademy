@@ -1,0 +1,118 @@
+﻿@using OnyeijeSchool.Models
+@inject UserManager<ApplicationUser> _userManager
+@inject RoleManager<IdentityRole> _roleManager
+@inject SignInManager<ApplicationUser> _signInManager
+@model IEnumerable<ApplicationUser>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "ListOfInstitutionsAdmin";
+}
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Users</h4>
+                </div>
+                <div class="card-body">
+                    <div class="toolbar">
+                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+                    </div>
+                    <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>FName</th>
+                                <th>SurName</th>
+                                <th>Email</th>
+                                <th class="disabled-sorting">Actions</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>FName</th>
+                                <th>SurName</th>
+                                <th>Email</th>
+                                <th class="disabled-sorting">Actions</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                           
+                                @foreach (var user in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => user.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => user.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => user.Email)
+                                    </td>
+
+                                    <td>
+
+                                        <form asp-action="DeleteUser" asp-route-id="@user.Id">
+                                            <div class="btn-group">
+                                                <a  asp-action="EditUser" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-outline-info btn-round" title="update">Update</a>
+                                                
+                                                <button type="submit"  class="btn btn-outline-info btn-round" onclick="return confirm('Are you sure u want to delete the User : @user.UserName ? ')" title="Delete">Delete</button>
+                                            </div>
+
+                                        </form>
+                                    </td>
+                                     </tr>
+
+                                  }
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end content-->
+                </div>
+                <!--  end card  -->
+            </div>
+            <!-- end col-md-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search records",
+                }
+
+            });
+
+
+        });
+    </script>
+    <script src="../../assets/js/core/jquery.min.js"></script>
+    <script src="../../assets/js/core/popper.min.js"></script>
+    <script src="../../assets/js/core/bootstrap.min.js"></script>
+    <script src="../../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../../assets/js/plugins/moment.min.js"></script>
+    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+    <script src="../../assets/js/plugins/bootstrap-switch.js"></script>
+    <!--  Plugin for Sweet Alert -->
+    <script src="../../assets/js/plugins/sweetalert2.min.js"></script>
+    <!-- Forms Validations Plugin -->
+    <script src="../../assets/js/plugins/jquery.validate.min.js"></script>
+    <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+    <script src="../../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="../../assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+    <script src="../../assets/js/plugins/bootstrap-datetimepicker.js"></script>
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+    <script src="../../assets/js/plugins/jquery.dataTables.min.js"></script>
+    <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+    <script src="../../assets/js/plugins/bootstrap-tagsinput.js"></script>

@@ -1,0 +1,111 @@
+﻿@model OnyeijeSchool.Models.Blog
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="card ">
+
+    <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+    <div class="card-header">
+        <h3 class="card-title">
+            Blog Posts
+        </h3>
+
+    </div>
+    <div class="wizard-navigation">
+        <ul class="nav nav-pills col-md-12">
+            <li class="nav-item">
+                <a class="nav-link active " data-toggle="tab" role="tab">
+                    Get Information and News from Students Like you
+                </a>
+            </li>
+        </ul>
+    </div>
+    <hr />
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane show active">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-10">
+                            <label for="exampleInput1" class="bmd-label-floating"><b>Blog Title</b></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
+                                </div>
+
+                                <input asp-for="Title" class="form-control" id="file" placeholder="The Headline goes here ..." />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-10">
+                            <label for="exampleInput1" class="bmd-label-floating"><b>Description</b></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+                                @Html.TextAreaFor(model => model.ShortDescription, new { @class = "form-control", placeholder = "Give a Short Description of your post...", @style = "height:100px" })
+                                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                            </div>
+                            <label for="exampleInput1" class="bmd-label-floating"><b>Content</b></label>
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+                                @Html.TextAreaFor(model => model.Content, new { @class = "form-control", placeholder = "What would you like to write?", style = "height:400px" })
+                                <span asp-validation-for="Content" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" id="fileUpload" class="btn btn-secondary" />
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+        <div class="card-footer" style="margin-top:30px">
+            <div class="pull-right">
+                <a href="@Url.Action("Index", "Blogs")" class="btn btn-rose btn-fill">View Blogs</a>
+
+            </div>
+            <div class="pull-left">
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+@if (ViewBag.Message != null)
+{
+    <span class="success sweet-alert"> @ViewBag.Message</span>
+}
+<script>
+    $('#fileUpload').click(function (e) {
+        if ($('#file').val() === "") {
+            sweetAlert("Field Shouldn't Be Empty!!", "Please fill in the required fields", "error");
+            //alert("Field Shouldn't Be Empty!!");
+            return false;
+        }
+        if ($('#file').val() !== "") {
+
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                title: 'Data has been saved successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return true;
+        }
+    });
+</script>

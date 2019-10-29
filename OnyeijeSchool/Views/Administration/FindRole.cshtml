@@ -1,0 +1,18 @@
+﻿@model OnyeijeSchool.ViewModel.FindRoleViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Find Role";
+}
+    <form method="post" asp-action="FindRole" asp-controller="Administration">
+        <div class="card">
+            <div class=" card-body">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <label asp-for="roleId" class="bmd-label-floating"></label>
+                <input asp-for="roleId" />
+                <span asp-validation-for="roleId" class="text-danger"></span>
+            </div>
+            <div class=" card-footer">
+                <button type="submit" class="btn btn-primary">Find Role</button>
+            </div>
+        </div>
+    </form>

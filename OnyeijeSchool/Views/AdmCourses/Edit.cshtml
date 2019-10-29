@@ -1,0 +1,128 @@
+﻿@model OnyeijeSchool.Models.AdmCourses
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="card ">
+
+    <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+    <div class="card-header">
+        <h3 class="card-title">
+            Edit Course
+        </h3>
+
+    </div>
+    <div class="wizard-navigation">
+        <ul class="nav nav-pills col-md-12">
+            <li class="nav-item">
+                <a class="nav-link active " data-toggle="tab" role="tab">
+                    Change some of the basic information about courses
+                </a>
+            </li>
+        </ul>
+    </div>
+    <hr />
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane show active">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="CourseId" />
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
+                                </div>
+
+                                <input asp-for="CourseCode" class="form-control" id="file" placeholder="Course Code" />
+                                <span asp-validation-for="CourseCode" class="text-danger"></span>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                                </div>
+                                <input asp-for="CourseTitle" class="form-control" id="file" placeholder="Course Title" />
+                                <span asp-validation-for="CourseTitle" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+                                <input asp-for="Description" class="form-control" id="file" placeholder="Description" />
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+                                <input asp-for="DateCreated" class="form-control" readonly="readonly" id="file" placeholder="Date Created" />
+                                <span asp-validation-for="DateCreated" class="text-danger"></span>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+                                <input asp-for="UserCreated" class="form-control" readonly="readonly" id="file" placeholder="User Created" />
+                                <span asp-validation-for="UserCreated" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-10">
+
+                                <input type="checkbox" asp-for="IsEnabled" /> Enable Course
+
+                            </div>
+                        </div>
+
+                    </div>
+        
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+        <div class="card-footer" style="margin-top:30px">
+            <div class="pull-right">
+                <a href="@Url.Action("Index", "AdmCourses")" class="btn btn-rose btn-fill">View List</a>
+
+            </div>
+            <div class="pull-left">
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+@if (ViewBag.Message != null)
+{
+    <span class="success sweet-alert"> @ViewBag.Message</span>
+}
+<script>
+    $('#fileUpload').click(function (e) {
+        if ($('#file').val() === "") {
+            sweetAlert("Field Shouldn't Be Empty!!", "Please fill in the required fields", "error");
+            //alert("Field Shouldn't Be Empty!!");
+            return false;
+        }
+        if ($('#file').val() !== "") {
+
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                title: 'Data has been saved successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return true;
+        }
+    });
+</script>

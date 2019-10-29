@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = null;
+}
+@model IEnumerable<OnyeijeSchool.Models.AdmClass>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>
+                Course
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+         
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdmCourses.CourseTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @if (item.StartDate > DateTime.Now.Date)
+                    {
+                        <button class="btn btn-warning">
+                            <span class="btn-label">
+                                <i class="nc-icon nc-calendar-60"></i>
+                            </span>
+                            Coming Soon..
+                        </button>
+                        item.IsActive = false;
+                    }
+                    else if (item.StartDate <= DateTime.Now.Date && item.EndDate > DateTime.Now.Date)
+                    {
+                        <button class="btn btn-success">
+                            <span class="btn-label">
+                                <i class="nc-icon nc-button-play"></i>
+                            </span>
+                            In Progress
+                        </button>
+                        item.IsActive = true;
+                    }
+                    else if (item.StartDate < DateTime.Now.Date && item.EndDate < DateTime.Now.Date)
+                    {
+                        <button class="btn btn-pinterest">
+                            <span class="btn-label">
+                                <i class="nc-icon nc-simple-remove"></i>
+                            </span>
+                            Class Ended
+                        </button>
+                        item.IsActive = false;
+                    }
+
+                </td>
+           
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-link btn-icon btn-sm edit" title="Edit"><i class="fa fa-edit"></i></a>
+                    <a asp-area="" asp-controller="AdmCourses" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-link btn-icon btn-sm" title="View"><i class="fa fa-eye"></i></a>
+                    <a asp-area="" asp-controller="AdmCourses" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-link btn-icon btn-sm" title="Delete"><i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

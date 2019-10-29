@@ -1,0 +1,126 @@
+﻿@model OnyeijeSchool.Models.ExamSetUp
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card ">
+
+    <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+    <div class="card-header">
+        <h3 class="card-title">
+            Set Up a New Exam
+        </h3>
+
+    </div>
+    <div class="wizard-navigation">
+        <ul class="nav nav-pills col-md-12">
+            <li class="nav-item">
+                <a class="nav-link active " data-toggle="tab" role="tab">
+                    Now you can set up an Exam
+                </a>
+            </li>
+        </ul>
+    </div>
+    <hr />
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane show active">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-10">
+                            <label for="exampleInput1" class="bmd-label-floating">Select Course</label>
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+
+                                <select asp-for="Id" class="form-control" asp-items="ViewBag.Id"></select>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
+                                </div>
+
+                                <input asp-for="Title" class="form-control" id="file" placeholder="Exam Name" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="input-group ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                                </div>
+                                <input asp-for="QuestionNo" class="form-control" id="file" placeholder="Number of Questions" />
+                                <span asp-validation-for="QuestionNo" class="text-danger"></span>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                                </div>
+                                @Html.TextAreaFor(model => model.Instructions, new { @class = "form-control", placeholder = "Type your Instructions here", style = "height:400px" })
+                                <span asp-validation-for="Instructions" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="col-lg-10">
+
+                                <input type="checkbox" asp-for="IsActive" /> Activate Exam for sitting
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+        <div class="card-footer" style="margin-top:30px">
+            <div class="pull-right">
+                <a href="@Url.Action("Index", "ExamSetUps")" class="btn btn-rose btn-fill">View List</a>
+
+            </div>
+            <div class="pull-left">
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+@if (ViewBag.Message != null)
+{
+    <span class="success sweet-alert"> @ViewBag.Message</span>
+}
+<script>
+    $('#fileUpload').click(function (e) {
+        if ($('#file').val() === "") {
+            sweetAlert("Field Shouldn't Be Empty!!", "Please fill in the required fields", "error");
+            //alert("Field Shouldn't Be Empty!!");
+            return false;
+        }
+        if ($('#file').val() !== "") {
+
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                title: 'Data has been saved successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return true;
+        }
+    });
+</script>
+
+

@@ -1,0 +1,35 @@
+﻿@using OnyeijeSchool.ViewModels
+@model List<UserRolesVM>
+@{
+    var userId = ViewBag.userId;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form method="post" asp-action="ManageUserRoles" asp-controller="Administration">
+    <div class="card">
+        <div class="card-header">
+            <h2>Manage User Roles</h2>
+        </div>
+        <div class="card-body">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="togglebutton">
+                    <label class="form-check-label" asp-for="@Model[i].IsSelected">
+                        <input type="hidden" asp-for="@Model[i].RoleId">
+                        <input type="hidden" asp-for="@Model[i].RoleNames">
+                        <input type="checkbox" asp-for="@Model[i].IsSelected">
+                        <span class="toggle"></span>
+                        @Model[i].RoleNames
+                    </label>
+                </div>
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+            }
+        </div>
+        <div class="card-body col-4">
+            <input type="submit" value="Update" class="btn btn-primary btn-sm" style="width:auto" />
+            <a asp-action="EditUser" asp-route-id="@userId" class="btn btn-rose btn-sm" style="width:auto">Cancel</a>
+        </div>
+    </div>
+</form>

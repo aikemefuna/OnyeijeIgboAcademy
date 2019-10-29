@@ -1,0 +1,90 @@
+﻿@model OnyeijeSchool.Models.AdmResult
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>AdmResult</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StudentName" class="control-label"></label>
+                <input asp-for="StudentName" class="form-control" />
+                <span asp-validation-for="StudentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExamName" class="control-label"></label>
+                <input asp-for="ExamName" class="form-control" />
+                <span asp-validation-for="ExamName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Course" class="control-label"></label>
+                <input asp-for="Course" class="form-control" />
+                <span asp-validation-for="Course" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalQuestions" class="control-label"></label>
+                <input asp-for="TotalQuestions" class="form-control" />
+                <span asp-validation-for="TotalQuestions" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Attempted" class="control-label"></label>
+                <input asp-for="Attempted" class="form-control" />
+                <span asp-validation-for="Attempted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NotAttempted" class="control-label"></label>
+                <input asp-for="NotAttempted" class="form-control" />
+                <span asp-validation-for="NotAttempted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Correct" class="control-label"></label>
+                <input asp-for="Correct" class="form-control" />
+                <span asp-validation-for="Correct" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InCorrect" class="control-label"></label>
+                <input asp-for="InCorrect" class="form-control" />
+                <span asp-validation-for="InCorrect" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Score" class="control-label"></label>
+                <input asp-for="Score" class="form-control" />
+                <span asp-validation-for="Score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserCreated" class="control-label"></label>
+                <input asp-for="UserCreated" class="form-control" />
+                <span asp-validation-for="UserCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateModified" class="control-label"></label>
+                <input asp-for="DateModified" class="form-control" />
+                <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserModified" class="control-label"></label>
+                <input asp-for="UserModified" class="form-control" />
+                <span asp-validation-for="UserModified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

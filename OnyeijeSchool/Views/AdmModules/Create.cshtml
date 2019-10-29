@@ -1,0 +1,122 @@
+﻿@model OnyeijeSchool.Models.AdmModules
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card ">
+
+    <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+    <div class="card-header">
+        <h3 class="card-title">
+            Create a New Module
+        </h3>
+
+    </div>
+    <div class="wizard-navigation">
+        <ul class="nav nav-pills col-md-12">
+            <li class="nav-item">
+                <a class="nav-link active " data-toggle="tab" role="tab">
+                    Let's start with the basic information about Module
+                </a>
+            </li>
+        </ul>
+    </div>
+    <hr />
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane show active">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
+                                </div>
+
+                                <input asp-for="ModuleCode" class="form-control" id="file" placeholder="Module Code" />
+                                <span asp-validation-for="ModuleCode" class="text-danger"></span>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                                </div>
+                                <input asp-for="Title" class="form-control" id="file" placeholder="Module Title" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "About Module", style = "height:400px" })
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <label for="exampleInput1" class="bmd-label-floating">Select Course</label>
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+
+                                <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
+                            </div>
+
+                            <div class="col-lg-10">
+
+                                <input type="checkbox" asp-for="IsEnabled" /> Enable Module
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                    
+                </form>
+            </div>
+
+
+        </div>
+        <div class="card-footer" style="margin-top:30px">
+            <div class="pull-right">
+                <a href="@Url.Action("Index", "AdmModules")" class="btn btn-wd btn-fill">View List</a>
+
+            </div>
+            <div class="pull-left">
+                <a href="@Url.Action("Create", "AdmCourses")" class="btn btn-danger btn-fill">Create New Course</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+@if (ViewBag.Message != null)
+{
+    <span class="success sweet-alert"> @ViewBag.Message</span>
+}
+<script>
+    $('#fileUpload').click(function (e) {
+        if ($('#file').val() === "") {
+            sweetAlert("Field Shouldn't Be Empty!!", "Please fill in the required fields", "error");
+            //alert("Field Shouldn't Be Empty!!");
+            return false;
+        }
+        if ($('#file').val() !== "") {
+
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                title: 'Data has been saved successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return true;
+        }
+    });
+</script>

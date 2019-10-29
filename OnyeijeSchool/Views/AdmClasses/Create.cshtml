@@ -1,0 +1,113 @@
+﻿@model OnyeijeSchool.Models.AdmClass
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <hr />
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane show active">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-10">
+                            <label for="exampleInput1" class="bmd-label-floating">Class Name</label>
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+
+                                <input asp-for="ClassName" class="form-control" id="file" placeholder="What is the name of the Class" />
+                                <span asp-validation-for="ClassName" class="text-danger"></span>
+                            </div>
+                            <label for="exampleInput1" class="bmd-label-floating">Select Course</label>
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+
+                                <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-10">
+                            <label for="exampleInput1" class="bmd-label-floating">Select Start Date</label>
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+
+                                <input asp-for="StartDate" class="form-control" id="file" placeholder="Select Start Date" />
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-10">
+                            <label for="exampleInput1" class="bmd-label-floating">Select End Date</label>
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+
+                                <input asp-for="EndDate" class="form-control" id="file" placeholder="Select End Date" />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                   
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" id="fileUpload" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+        <div class="card-footer" style="margin-top:30px">
+            <div class="pull-right">
+                <a href="@Url.Action("Index", "AdmClasses")" class="btn btn-rose btn-fill">View List</a>
+
+            </div>
+            <div class="pull-left">
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+@if (ViewBag.Message != null)
+{
+    <span class="success sweet-alert"> @ViewBag.Message</span>
+}
+<script>
+    $('#fileUpload').click(function (e) {
+        if ($('#file').val() === "") {
+            sweetAlert("Field Shouldn't Be Empty!!", "Please fill in the required fields", "error");
+            //alert("Field Shouldn't Be Empty!!");
+            return false;
+        }
+        if ($('#file').val() !== "") {
+
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                title: 'Data has been saved successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return true;
+        }
+    });
+</script>

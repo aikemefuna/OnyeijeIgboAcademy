@@ -1,0 +1,123 @@
+﻿@model OnyeijeSchool.Models.CourseIndex
+@{
+    Layout = "~/Views/Shared/_FontendLayout.cshtml";
+
+}
+
+
+<section class="breadcum">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>COURSES</h4>
+                <div class="pages">
+                    <a href="index.html">Home</a>
+                    <span>&#47;</span>
+                    <a href="courses.html">Courses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- courses_page -->
+
+<section class="courses_page">
+    <div class="container">
+        <div class="row well well-sm">
+            <div class="col-lg-5 col-md-12">
+                <div class="total-courses">
+                    <p>Showing <span>9</span> of total <span>55</span> Courses</p>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 courses_page_menu">
+                <!-- Single button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle courses_page_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Default sorting <i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Science In The New Era</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <!-- <li role="separator" class="divider"></li> -->
+                        <li><a href="#">Design Practice</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group sorting-btn" id="group-btn">
+                    <a href="#" id="list" class="btn btn-default btn-sm">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <a href="#" id="grid" class="btn btn-default btn-sm active">
+                        <i class="fa fa-th"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="products" class="row list-group">
+            @foreach (var item in Model.AdmCourses)
+            {
+                <div class="item col-md-6 col-xl-4">
+                    <div class="block-content">
+                        <div class="content">
+                            <div class="courses-img">
+                                <img src="~/Images/download (1).jpg" alt="courses">
+
+                                <div class="courses-overlay">
+                                    <h6>@Html.DisplayFor(modelItem => item.CourseTitle)</h6>
+                                </div>
+                            </div>
+                            <div class="tag">
+                                <i class="fa fa-bookmark"></i>
+                            </div>
+                            <a href="single-courses.html">
+                                <h6>@Html.DisplayFor(modelItem => item.CourseTitle)</h6>
+                            </a>
+                            <div class="entry-meta">
+                                <div class="date">
+                                    <p>Starts: oct 11, <span class="update-year"></span></p>
+                                </div>
+                                @if (item.IsEnabled == true)
+                                {
+                                    <div class="alert alert-success">
+                                        <span class="btn-label">
+                                            <i class="nc-icon nc-check-2"></i>
+                                        </span>
+                                        Enabled for Training
+                                    </div>
+                                    <a asp-area="" asp-controller="AdmCourses" asp-action="Courses" asp-route-id="@item.CourseId" class="btn btn-outline-default btn-round btn-block">Begin Training</a>
+
+                                }
+                                else
+                                {
+                                    <div class="alert alert-danger">
+                                        <span class="btn-label">
+                                            <i class="nc-icon nc-simple-remove"></i>
+                                        </span> Not opened for class
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+            <!-- end about list -->
+            <div class="col-lg-12 courses_page_btn2">
+                <nav>
+                    <ul class="pagination">
+                        <li><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        </div>
+</section>

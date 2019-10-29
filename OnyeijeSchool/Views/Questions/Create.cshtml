@@ -1,0 +1,155 @@
+﻿@model OnyeijeSchool.Models.Questions
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="card ">
+
+    <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+    <div class="card-header">
+        <h3 class="card-title">
+            Create a New Question
+        </h3>
+
+    </div>
+    <div class="wizard-navigation">
+        <ul class="nav nav-pills col-md-12">
+            <li class="nav-item">
+                <a class="nav-link active " data-toggle="tab" role="tab">
+                    Here, you can add as many questions to the bank
+                </a>
+            </li>
+        </ul>
+    </div>
+    <hr />
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane show active">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-10">
+                            <label for="exampleInput1" class="bmd-label-floating">Select Course</label>
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+
+                                <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
+                            </div>
+                            <label for="exampleInput1" class="bmd-label-floating">Select Module</label>
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-send"></i></span>
+                                </div>
+
+                                <select asp-for="ModuleId" class="form-control" asp-items="ViewBag.ModuleId"></select>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
+                                </div>
+
+                                <input asp-for="Instructions" class="form-control" id="file" placeholder="Instructions" />
+                                <span asp-validation-for="Instructions" class="text-danger"></span>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                                </div>
+                                @Html.TextAreaFor(model => model.Question, new { @class = "form-control", placeholder = "Type your questions here", style = "height:400px" })
+                                <span asp-validation-for="Question" class="text-danger"></span>
+                            </div>
+                            <div class="form-row">
+                                <div class="input-group col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                                    </div>
+                                    <input asp-for="Option1" class="form-control" id="file" placeholder="Option 1" />
+                                    <span asp-validation-for="Option1" class="text-danger"></span>
+                                </div>
+                                <div class="input-group col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                                    </div>
+                                    <input asp-for="Option2" class="form-control" id="file" placeholder="Option 2" />
+                                    <span asp-validation-for="Option2" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="input-group col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                                    </div>
+                                    <input asp-for="Option3" class="form-control" id="file" placeholder="Option 3" />
+                                    <span asp-validation-for="Option3" class="text-danger"></span>
+                                </div>
+                                <div class="input-group col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                                    </div>
+                                    <input asp-for="Option4" class="form-control" id="file" placeholder="Option 4" />
+                                    <span asp-validation-for="Option4" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="input-group col-lg-6">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                                </div>
+                                <input asp-for="RightAnswer" class="form-control" id="file" placeholder="Right Option" />
+                                <span asp-validation-for="RightAnswer" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                   </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+        <div class="card-footer" style="margin-top:30px">
+            <div class="pull-right">
+                <a href="@Url.Action("Index", "Questions")" class="btn btn-rose btn-fill">View List</a>
+
+            </div>
+            <div class="pull-left">
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+@if (ViewBag.Message != null)
+{
+    <span class="success sweet-alert"> @ViewBag.Message</span>
+}
+<script>
+    $('#fileUpload').click(function (e) {
+        if ($('#file').val() === "") {
+            sweetAlert("Field Shouldn't Be Empty!!", "Please fill in the required fields", "error");
+            //alert("Field Shouldn't Be Empty!!");
+            return false;
+        }
+        if ($('#file').val() !== "") {
+
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                title: 'Data has been saved successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return true;
+        }
+    });
+</script>
+

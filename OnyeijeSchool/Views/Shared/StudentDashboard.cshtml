@@ -1,0 +1,305 @@
+﻿@model OnyeijeSchool.Models.CourseIndex
+@{
+    Layout = "~/Views/Shared/_SLayout.cshtml";
+    ViewData["Title"] = "Student Dashboard";
+}
+
+
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-6 ">
+        
+           
+            <div class="alert alert-danger">
+                <p>
+                    You have missed @ViewBag.PastClasses Classes
+                </p>
+                <div class="stats">
+                    <a href="@Url.Action("Index","AdmCourses")" style="color:white"><i class="fa fa-eye"></i> View Missed Classes</a>
+                </div>
+              
+            </div>
+         
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="alert alert-success">
+            <p>
+                You have @ViewBag.ActiveClass active class
+            </p>
+            <div class="stats">
+                <a href="@Url.Action("Index","AdmCourses")" style="color:white"><i class="fa fa-eye"></i> View Active Classes</a>
+            </div>
+
+        </div>
+      
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="alert alert-warning">
+            <p>
+                You have @ViewBag.NextClass upcoming class
+            </p>
+            <div class="stats">
+                <a href="@Url.Action("Index","AdmCourses")" style="color:white"><i class="fa fa-eye"></i> View Upcoming Classes</a>
+            </div>
+
+        </div>
+       
+    </div>
+
+</div>
+<div class="row">
+    @if (ViewBag.assignment > 0)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="alert alert-primary">
+                <p>
+                    You have @ViewBag.assignment Assignment
+                </p>
+                <div class="stats">
+                    <a href="@Url.Action("Index","AdmAssignments")" style="color:white"><i class="fa fa-eye"></i> View Assignment</a>
+                </div>
+
+            </div>
+
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card-pricing ">
+            <a class="nav-link" asp-area="" asp-action="AdmCourses" asp-controller="Index">
+                <div class="card-body">
+                    <img src="~/Images/download.jpg" style="width:35%" alt="My course" />
+                    <h3 class="card-title">My Courses</h3>
+
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card-pricing ">
+            <a class="nav-link" asp-area="" asp-action="AdmAssignments" asp-controller="Index">
+                <div class="card-body">
+                    <img src="~/Images/checklist-clipart-writing-4.png" style="width:35%" alt="My assignment" />
+                    <h3 class="card-title">My Assignment</h3>
+
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card-pricing ">
+            <a class="nav-link" asp-area="" asp-action="Protected" asp-controller="Home">
+                <div class="card-body">
+                    <img src="~/Images/Download-Chat-PNG-Image.png" style="width:40%" alt="My chat" />
+                    <h3 class="card-title">My Chat</h3>
+
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-lg-6 col-md-12 text-center" style="height:700px">
+        <div class="card  card-tasks">
+            <div class="card-header ">
+                <h4 class="card-title">Forums</h4>
+                <h5 class="card-category">Apostolic Training School Forum</h5>
+            </div>
+            <div class="card-body ">
+                <div class="table-full-width table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" checked>
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="img-row">
+                                    <div class="img-wrapper">
+                                        <img src="../assets/img/faces/ayo-ogunseinde-2.jpg" class="img-raised" />
+                                    </div>
+                                </td>
+                                <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                        <i class="nc-icon nc-ruler-pencil"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                                        <i class="nc-icon nc-simple-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="img-row">
+                                    <div class="img-wrapper">
+                                        <img src="../assets/img/faces/erik-lucatero-2.jpg" class="img-raised" />
+                                    </div>
+                                </td>
+                                <td class="text-left">Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                        <i class="nc-icon nc-ruler-pencil"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                                        <i class="nc-icon nc-simple-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" checked>
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="img-row">
+                                    <div class="img-wrapper">
+                                        <img src="../assets/img/faces/kaci-baum-2.jpg" class="img-raised" />
+                                    </div>
+                                </td>
+                                <td class="text-left">
+                                    Using dummy content or fake information in the Web design process can result in products with unrealistic
+                                </td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                        <i class="nc-icon nc-ruler-pencil"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                                        <i class="nc-icon nc-simple-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="img-row">
+                                    <div class="img-wrapper">
+                                        <img src="../assets/img/faces/joe-gardner-2.jpg" class="img-raised" />
+                                    </div>
+                                </td>
+                                <td class="text-left">But I must explain to you how all this mistaken idea of denouncing pleasure</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                        <i class="nc-icon nc-ruler-pencil"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                                        <i class="nc-icon nc-simple-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-refresh spin"></i> Updated 3 minutes ago
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-6" style="height:700px">
+
+        <div class="card card-timeline card-tasks">
+            <h4 class="card-title">Blogs</h4>
+            <div class="card-body table-full-width table-responsive">
+                @foreach (var item in Model.Blog)
+                {
+                    <ul class="timeline timeline-simple">
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge danger">
+                                <i class="nc-icon nc-single-copy-04"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <a href="@Url.Action("Details", "Blogs", new { id = item.BlogId })">@item.Title</a>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>@Html.DisplayFor(modelItem => item.ShortDescription)
+                                </div>
+                                <h6>
+                                    <i class="ti-time"></i> Posted by:  @item.UserCreated on @item.DateCreated
+                                </h6>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="wizard-navigation">
+        <ul class="nav nav-pills col-md-12">
+            <li class="nav-item">
+                <a class="nav-link active " data-toggle="tab" role="tab">
+                    Courses
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="row">
+
+
+    @foreach (var item in Model.AdmCourses)
+    {
+        <div class="col-lg-4">
+            <div class="card" style="text-align:center; padding:10px">
+
+                <h2><b>@Html.DisplayFor(modelItem => item.CourseTitle)</b></h2>
+                @if (item.IsEnabled == true)
+                {
+                    <div class="alert alert-success">
+                        <span class="btn-label">
+                            <i class="nc-icon nc-check-2"></i>
+                        </span>
+                        Enabled for Training
+                    </div>
+                    <a asp-area="" asp-controller="AdmCourses" asp-action="Courses" asp-route-id="@item.CourseId" class="btn btn-outline-default btn-round btn-block">Begin Training</a>
+
+                }
+                else
+                {
+                    <div class="alert alert-danger">
+                        <span class="btn-label">
+                            <i class="nc-icon nc-simple-remove"></i>
+                        </span> Not opened for class
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    }
+</div>

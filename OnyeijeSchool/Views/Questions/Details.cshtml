@@ -1,0 +1,90 @@
+﻿@model OnyeijeSchool.Models.Questions
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Questions</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AdmCourses)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AdmCourses.CourseId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Instructions)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Instructions)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Question)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Question)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Option1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Option1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Option2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Option2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Option3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Option3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Option4)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Option4)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RightAnswer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RightAnswer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserCreated)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserCreated)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateModified)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateModified)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserModified)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserModified)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.QuestId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,195 @@
+﻿@model OnyeijeSchool.Models.AdmTopic
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="row">
+    <div class=" wizard-navigation">
+        <ul class="nav nav-pills col-md-12">
+            <li class="nav-item">
+                <a class="nav-link active " data-toggle="tab" role="tab">
+                    Topics
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<hr />
+<div class="row">
+
+    <div class="col-lg-7">
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.TopicNumber)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.TopicNumber)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class="col-sm-3">
+                Module
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.AdmModules.Title)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Summary)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Summary)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Notes)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Notes)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.IsEnabled)
+            </dt>
+            <dd class="col-sm-9">
+                @{
+
+                    if (Model.IsEnabled == true)
+                    {
+                        <button class="btn btn-success">
+                            <span class="btn-label">
+                                <i class="nc-icon nc-check-2"></i>
+                            </span>
+                            Enabled
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-pinterest">
+                            <span class="btn-label">
+                                <i class="nc-icon nc-simple-remove"></i>
+                            </span> Disabled
+                        </button>
+                    }
+                }
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.VideoUrl)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.VideoUrl)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.DateCreated)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.UserCreated)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.UserCreated)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.DateModified)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.DateModified)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.UserModified)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.UserModified)
+            </dd>
+        </dl>
+    </div>
+    <div class="card col-lg-5">
+        <div class=" wizard-navigation">
+            <ul class="nav nav-pills col-md-12">
+                <li class="nav-item">
+                    <a class="nav-link active " data-toggle="tab" role="tab">
+                        Upload Files to topic
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <hr />
+        <form asp-action="Details">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="TopicNumber" />
+            <input type="hidden" asp-for="Title" />
+            <input type="hidden" asp-for="Summary" />
+            <input type="hidden" asp-for="Notes" />
+            <input type="hidden" asp-for="ModuleId" />
+            <input type="hidden" asp-for="DateCreated" />
+            <input type="hidden" asp-for="UserCreated" />
+            <input type="hidden" asp-for="IsEnabled" />
+
+            <label for="exampleInput1" class="bmd-label-floating">Video Url</label>
+            <div class="col-lg-10 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="nc-icon nc-circle-10"></i></span>
+                </div>
+                <input asp-for="VideoUrl" class="form-control" id="file" placeholder="Video Url e.g http://..." />
+                <span asp-validation-for="VideoUrl" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="col-lg-10 ">
+                <div class="editor-label">
+                    <label>Files:</label>
+                </div>
+                <div class="editor-field">
+                    <input type="file" id="fUpload" name="file" multiple="multiple" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" id="btnUpload" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>
+<div class="pull-right">
+    <a href="@Url.Action("Index", "AdmTopics")" class="btn btn-rose btn-fill">View List</a>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#btnUpload').on('click', function () {
+            var files = $('#fUpload').prop("files");
+            var fdata = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                fdata.append("files", files[i]);
+            }
+            if (files.length > 0) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Index?handler=Upload",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("XSRF-TOKEN",
+                            $('input:hidden[name="__RequestVerificationToken"]').val());
+                    },
+                    data: fdata,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        alert('File Uploaded Successfully.')
+                    }
+                });
+            }                                                             
+            else {                                                   
+                alert('Please select a file.')
+            }
+        })
+    });
+</script>

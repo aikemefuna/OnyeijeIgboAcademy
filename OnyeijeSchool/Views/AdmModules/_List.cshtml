@@ -1,0 +1,77 @@
+﻿@model IEnumerable<OnyeijeSchool.Models.AdmModules>
+@{
+    Layout = null;
+}
+
+<table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Module Code
+            </th>
+            <th>
+                Module Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Course
+            </th>
+            <th>
+                Status
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModuleCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdmCourses.CourseTitle)
+                </td>
+                <td>
+                    @if (item.IsEnabled == true)
+                    {
+                        <button class="btn btn-success">
+                            <span class="btn-label">
+                                <i class="nc-icon nc-check-2"></i>
+                            </span>
+                            Enabled
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-pinterest">
+                            <span class="btn-label">
+                                <i class="nc-icon nc-simple-remove"></i>
+                            </span> Disabled
+                        </button>
+                    }
+                </td>
+
+                <td>
+
+                    <a asp-action="Edit" asp-route-id="@item.ModuleId" class="btn btn-warning btn-link btn-icon btn-sm edit" title="Edit"><i class="fa fa-edit"></i></a>
+                    <a asp-area="" asp-controller="AdmModules" asp-action="Delete" asp-route-id="@item.ModuleId" class="btn btn-danger btn-link btn-icon btn-sm" title="Delete"><i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="card-footer" style="margin-top:30px">
+
+    <div class="clearfix"></div>
+</div>

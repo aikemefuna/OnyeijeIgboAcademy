@@ -1,0 +1,300 @@
+﻿@model OnyeijeSchool.Models.CourseIndex
+@{
+    ViewData["Title"] = "AdminDashboard";
+}
+
+
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-briefcase-24 text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Courses</p>
+                            <p class="card-title">@ViewBag.Courses
+                            <p>
+                        </div>
+                    </div>  1
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <a href="@Url.Action("Index","AdmCourses")"><i class="fa fa-eye"></i> View Courses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-box text-success"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Modules</p>
+                            <p class="card-title">@ViewBag.Modules
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <a href="@Url.Action("Index","AdmModules")"><i class="fa fa-eye"></i> View Modules</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-bullet-list-67 text-danger"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Topics</p>
+                            <p class="card-title">@ViewBag.Topics
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <a href="@Url.Action("Index","AdmTopics")"><i class="fa fa-eye"></i> View Topics</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-user-run text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Instructors</p>
+                            <p class="card-title">@ViewBag.Instructors
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <a href="@Url.Action("Index","Instructors")"><i class="fa fa-eye"></i> View Instructors</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-app text-info"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Classes</p>
+                            <p class="card-title">@ViewBag.Classes
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <a href="@Url.Action("Index","AdmClasses")"><i class="fa fa-eye"></i> View Classes</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-lg-6 col-md-12 text-center" style="height:700px">
+        <div class="card  card-tasks">
+            <div class="card-header ">
+                <h4 class="card-title">Forums</h4>
+                <h5 class="card-category">Apostolic Training School Forum</h5>
+            </div>
+            <div class="card-body ">
+                <div class="table-full-width table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" checked>
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="img-row">
+                                    <div class="img-wrapper">
+                                        <img src="../assets/img/faces/ayo-ogunseinde-2.jpg" class="img-raised" />
+                                    </div>
+                                </td>
+                                <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                        <i class="nc-icon nc-ruler-pencil"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                                        <i class="nc-icon nc-simple-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="img-row">
+                                    <div class="img-wrapper">
+                                        <img src="../assets/img/faces/erik-lucatero-2.jpg" class="img-raised" />
+                                    </div>
+                                </td>
+                                <td class="text-left">Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                        <i class="nc-icon nc-ruler-pencil"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                                        <i class="nc-icon nc-simple-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" checked>
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="img-row">
+                                    <div class="img-wrapper">
+                                        <img src="../assets/img/faces/kaci-baum-2.jpg" class="img-raised" />
+                                    </div>
+                                </td>
+                                <td class="text-left">
+                                    Using dummy content or fake information in the Web design process can result in products with unrealistic
+                                </td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                        <i class="nc-icon nc-ruler-pencil"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                                        <i class="nc-icon nc-simple-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox">
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="img-row">
+                                    <div class="img-wrapper">
+                                        <img src="../assets/img/faces/joe-gardner-2.jpg" class="img-raised" />
+                                    </div>
+                                </td>
+                                <td class="text-left">But I must explain to you how all this mistaken idea of denouncing pleasure</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                        <i class="nc-icon nc-ruler-pencil"></i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                                        <i class="nc-icon nc-simple-remove"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-refresh spin"></i> Updated 3 minutes ago
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-6" style="height:700px">
+
+        <div class="card card-timeline card-tasks">
+            <h4 class="card-title">Blogs</h4>
+            <div class="card-body table-full-width table-responsive">
+                @foreach (var item in Model.Blog)
+                {
+                    <ul class="timeline timeline-simple">
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge danger">
+                                <i class="nc-icon nc-single-copy-04"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <a href="@Url.Action("Details", "Blogs", new { id = item.BlogId })">@item.Title</a>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>@Html.DisplayFor(modelItem => item.ShortDescription)
+                                </div>
+                                <h6>
+                                    <i class="ti-time"></i> Posted by:  @item.UserCreated on @item.DateCreated
+                                </h6>
+                            </div>
+                        </li>
+
+                    </ul>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
